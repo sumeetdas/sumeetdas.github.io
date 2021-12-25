@@ -6,11 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="_Common.fs" />
+    <Compile Include="_Layout.fs" />
+    <Compile Include="Resume.fs" />
+    <Compile Include="Index.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Feliz.ViewEngine" Version="0.24.0" />
+    <PackageReference Include="Zanaptak.TypedCssClasses" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

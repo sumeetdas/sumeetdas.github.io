@@ -1,3 +1,7 @@
 .ionide
 bin
 obj
+
+.fake
+node_modules
+public
