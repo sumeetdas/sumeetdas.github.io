@@ -1,4 +1,5 @@
 ﻿open Feliz.ViewEngine
+open System.IO
 
 let html =
     Html.h1 [
@@ -7,7 +8,8 @@ let html =
     ]
     |> Render.htmlView
 
-printfn "Output: %s" html
+File.WriteAllBytes ("index.html", html |> System.Text.Encoding.ASCII.GetBytes)
+// printfn "Output: %s" html
 
 // For more information see https://aka.ms/fsharp-console-apps
 printfn "Hello from F#"
