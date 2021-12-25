@@ -51,6 +51,8 @@ let body (components: ReactElement list) =
                 tw.``max-w-2xl``
                 tw.``justify-center``
                 tw.``align-middle``
+                "h-full"
+                "my-auto"
             ]
             prop.children components
         ]
