@@ -5,7 +5,7 @@ open Feliz.ViewEngine
 
 let menu = 
     let items: (string * string) list = [
-        "Home", ""
+        "Home", "/index.html"
         "Resume", "/resume.html"
     ]
 
@@ -17,6 +17,7 @@ let menu =
                 tw.``mx-2``
                 tw.``flex``
                 tw.``flex-col``
+                "dark:text-gray-200"
             ]
             prop.text name
             prop.href href
@@ -67,7 +68,8 @@ let body (components: ReactElement list) =
                     tw.``flex``
                     tw.``flex-col``
                     tw.``w-full``
-                    "dark:bg-red-200"
+                    tw.``h-full``
+                    "dark:bg-slate-800"
                 ]
                 prop.children [ 
                     menu 
@@ -82,3 +84,8 @@ let layout (components: ReactElement list) =
         head   
         body components
     ]
+
+let htmlToString (elem: ReactElement) = 
+    [ elem ]
+    |> layout
+    |> Render.htmlView
