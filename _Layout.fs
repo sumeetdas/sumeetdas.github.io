@@ -3,7 +3,7 @@ module _Layout
 open _Common
 open Feliz.ViewEngine
 
-let menu = 
+let menu (pageName: Page) = 
     let items: (string * string) list = [
         "Home", "/index.html"
         "Resume", "/resume.html"
@@ -11,14 +11,29 @@ let menu =
 
     let menuItem (item: string * string) = 
         let name, href = item
+        let isCurrentPage = href.Contains (pageName |> Page.fileName)
         Html.a [
-            prop.classes [
-                tw.``w-12``
+            prop.classes ([
+                tw.``w-24``
                 tw.``mx-2``
                 tw.``flex``
                 tw.``flex-col``
                 "dark:text-gray-200"
-            ]
+                "text-2xl"
+                "leading-8"
+                "h-14"
+                "lg:h-16"
+                "text-center"
+            ] @ (
+                if isCurrentPage 
+                then 
+                    [
+                        "border-b-4"
+                        "font-extrabold"
+                    ] 
+                else []
+                )
+            )
             prop.text name
             prop.href href
         ]
@@ -29,12 +44,16 @@ let menu =
             tw.``flex-row``
             tw.``justify-center``
             tw.``align-middle``
+            "h-14"
+            "lg:h-16"
+            "my-4"
         ]
         prop.children (items |> List.map menuItem)
     ]
 
-let head = 
+let head (pageName: Page) = 
     Html.head [
+        Html.title (pageName |> Page.title)
         Html.link [
             prop.rel "stylesheet"
             prop.type' "text/css"
@@ -42,17 +61,20 @@ let head =
         ]
     ]
 
-let body (components: ReactElement list) = 
+let body (pageName: Page) (components: ReactElement list) = 
     let container = 
         Html.div [
             prop.classes [
                 tw.``flex``
                 tw.``flex-col``
                 tw.``mx-auto``
-                tw.``max-w-2xl``
+                tw.``max-w-sm``
+                tw.``md:max-w-md``
+                tw.``lg:max-w-lg``
+                tw.``xl:max-w-xl``
+                tw.``2xl:max-w-2xl``
                 tw.``justify-center``
                 tw.``align-middle``
-                "h-full"
                 "my-auto"
             ]
             prop.children components
@@ -61,6 +83,7 @@ let body (components: ReactElement list) =
     Html.body [
         prop.classes [
             "dark"
+            "dark:bg-slate-800"
         ]
         prop.children [
             Html.div [
@@ -69,23 +92,22 @@ let body (components: ReactElement list) =
                     tw.``flex-col``
                     tw.``w-full``
                     tw.``h-full``
-                    "dark:bg-slate-800"
                 ]
                 prop.children [ 
-                    menu 
+                    menu pageName
                     container
                 ]
             ]
         ]
     ]
 
-let layout (components: ReactElement list) = 
+let layout (pageName: Page) (components: ReactElement list) = 
     Html.html [
-        head   
-        body components
+        head pageName
+        body pageName components
     ]
 
-let htmlToString (elem: ReactElement) = 
-    [ elem ]
-    |> layout
+let htmlToString (pageName: Page) (elems: ReactElement list) = 
+    elems
+    |> layout pageName
     |> Render.htmlView
