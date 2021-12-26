@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <DefaultItemExcludes>node_modules\**;public\**;bin\**;obj\**;$(DefaultItemExcludes)</DefaultItemExcludes>
+    <!-- <DefaultItemExcludes>node_modules\**;bin\**;obj\**;$(DefaultItemExcludes)</DefaultItemExcludes> -->
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +12,9 @@
     <Compile Include="Resume.fs" />
     <Compile Include="Index.fs" />
     <Compile Include="Program.fs" />
+
+    <!-- extends watching group to include *.js files -->
+    <Watch Include="**\*.fs" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*;public\**\*" />
   </ItemGroup>
 
   <ItemGroup>
