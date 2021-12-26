@@ -15,13 +15,13 @@ let aboutMe =
         [
             "I'm a software developer currently writing Java code for a living."
             "I love functional programming and writing code in F#."
-            "My current interests are - Rust/F#/Distributed Systems/Developing"
+            "My current interests are - Rust / F# / Distributed Systems / Developing"
             "Mobile and Web apps."
         ] |> toPara
         [
             "I currently live in India and I'm looking for"
             "fully remote jobs at the moment. I'm also open to"
-            "relocate if need be."
+            "relocate to other countries if need be."
         ] |> toPara
         [
             "You can follow me on GitHub and Twitter, or if you"
@@ -46,6 +46,15 @@ let links =
             prop.classes [
                 "inline-flex"
                 "mx-2"
+                "bg-red-300"
+                "text-white" 
+                "p-4" 
+                "rounded-full"
+                "text-2xl" 
+                "font-bold" 
+                "overflow-visible"
+                "w-16"
+                "h-16"
             ]
             prop.href link
             prop.target "_blank"
@@ -53,14 +62,9 @@ let links =
                 Html.img [
                     prop.classes [
                         "align-middle"
+                        "text-white"
                     ]
                     prop.src icon
-                ]
-                Html.span [
-                    prop.classes [
-                        "align-middle"
-                    ]
-                    prop.text name
                 ]
             ]
         ]

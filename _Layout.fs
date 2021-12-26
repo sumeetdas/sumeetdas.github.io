@@ -58,15 +58,21 @@ let body (components: ReactElement list) =
         ]
 
     Html.body [
-        Html.div [
-            prop.classes [
-                tw.``flex``
-                tw.``flex-col``
-                tw.``w-full``
-            ]
-            prop.children [ 
-                menu 
-                container
+        prop.classes [
+            "dark"
+        ]
+        prop.children [
+            Html.div [
+                prop.classes [
+                    tw.``flex``
+                    tw.``flex-col``
+                    tw.``w-full``
+                    "dark:bg-red-200"
+                ]
+                prop.children [ 
+                    menu 
+                    container
+                ]
             ]
         ]
     ]

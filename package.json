@@ -5,7 +5,7 @@
     "fsbuild": "dotnet build",
     "build": "npm run fsbuild && dotnet run",
     "liveserver": "live-server public --no-css-inject",
-    "watch": "start npm run csswatch & start dotnet watch & npm run liveserver"
+    "watch": "start npm run csswatch & start dotnet watch run & npm run liveserver"
   },
   "devDependencies": {
     "tailwindcss": "^3.0.7"
