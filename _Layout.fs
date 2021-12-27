@@ -47,6 +47,7 @@ let menu (pageName: Page) =
             "h-14"
             "lg:h-16"
             "my-4"
+            "print:hidden"
         ]
         prop.children (items |> List.map menuItem)
     ]
