@@ -58,7 +58,7 @@ let head (pageName: Page) =
         Html.link [
             prop.rel "stylesheet"
             prop.type' "text/css"
-            prop.href "output.css"
+            prop.href "style.css"
         ]
         Html.link [
             prop.rel "icon"
