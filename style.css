@@ -3,6 +3,35 @@
 @tailwind utilities;
 
 @layer base {
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('fonts/cmunss.otf');
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('fonts/cmunsx.otf');
+        font-weight: bold;
+    }
+    /* @font-face {
+        font-family: "Computer Modern";
+        src: url('fonts/cmunsi.otf');
+        font-style: italic, oblique;
+    }
+    @font-face {
+        font-family: "Computer Modern";
+        src: url('fonts/cmunbxo.otf');
+        font-weight: bold;
+        font-style: italic, oblique;
+    } */
+
+    @media print {
+        body {
+            font-family: "Computer Modern", sans-serif;
+            font-size: 20px;
+            width: 100%;
+        }
+    }
+
     html {
         font-size: 16px;
     }

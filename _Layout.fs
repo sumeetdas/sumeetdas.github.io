@@ -77,6 +77,8 @@ let body (pageName: Page) (components: ReactElement list) =
                 tw.``justify-center``
                 tw.``align-middle``
                 "my-auto"
+                "print:w-full"
+                "print:max-w-lg"
             ]
             prop.children components
         ]
