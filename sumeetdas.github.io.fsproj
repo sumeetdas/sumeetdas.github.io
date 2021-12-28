@@ -14,7 +14,7 @@
     <Compile Include="Program.fs" />
 
     <!-- extends watching group to include *.js files -->
-    <Watch Include="**\*.fs" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*;public\**\*" />
+    <Watch Include="**\*.fs" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*;docs\**\*" />
   </ItemGroup>
 
   <ItemGroup>
