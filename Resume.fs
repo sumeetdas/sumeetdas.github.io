@@ -398,13 +398,24 @@ let print =
             "flex-col"
             "mx-auto"
             "text-gray-200"
+            "my-4"
             "print:hidden"
         ]
         prop.children [
             Html.button [
                 prop.classes [
-                    "w-32"
+                    "w-20"
                     "text-center"
+                    "text-xl"
+                    "h-12"
+                    "text-gray-100"
+                    "text-white"
+                    "border-2"
+                    "border-sky-500"
+                    "bg-sky-500"
+                    "font-semibold"
+                    "rounded"
+                    "p-2"
                 ]
                 KeyValue ("onClick", "window.print()")
                 prop.text "Print"
