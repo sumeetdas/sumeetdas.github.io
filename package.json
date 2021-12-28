@@ -1,12 +1,12 @@
 {
   "scripts": {
-    "css": "npx tailwindcss -i ./style.css -o ./public/style.css",
-    "csswatch": "npx tailwindcss -i ./style.css -o ./public/style.css --watch",
+    "css": "npx tailwindcss -i ./style.css -o ./docs/style.css",
+    "csswatch": "npx tailwindcss -i ./style.css -o ./docs/style.css --watch",
     "fsbuild": "dotnet build",
     "build": "npm run fsbuild && dotnet run",
-    "liveserver": "live-server public --no-css-inject --wait=5000",
+    "liveserver": "live-server docs --no-css-inject --wait=5000",
     "watch": "start npm run csswatch & start dotnet watch run & npm run liveserver",
-    "prod": "npm run build && npx tailwindcss -i ./style.css -o ./public/style.css --minify"
+    "prod": "npm run build && npx tailwindcss -i ./style.css -o ./docs/style.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "^3.0.7"
