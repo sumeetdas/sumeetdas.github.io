@@ -25,6 +25,8 @@ let intro =
                     "border-b-4"
                     "mb-4"
                     "pb-4"
+                    "print:mb-2"
+                    "print:pb-2"
                 ]
                 prop.text "Sumeet Das"
             ]
@@ -87,12 +89,17 @@ let experienceList: Experience list =
             Highlights = 
                 [
                     [
-                        "Rebuilt my personal website as a static"
-                        "website using F#, Tailwind CSS and Vanilla JS"
+                        "Implemented core features and improved performance"
+                        "of Oracle Randomization Service (ORS) by optimizing"
+                        "SQL queries"
                     ] |> concat |> listElem
                     [
-                        "Involved in improving translatability of"
-                        "the application"
+                        "Worked on improving translatability of"
+                        "the product across multiple microservices"
+                    ] |> concat |> listElem
+                    [
+                        "Tech used: Kubernetes, Liquibase, Bash scripts,"
+                        "Oracle DB, Java EE, git, OCI"
                     ] |> concat |> listElem
                     [
                         Html.text "Product URL - "
@@ -107,8 +114,19 @@ let experienceList: Experience list =
             Highlights = 
                 [
                     [
-                        "Rebuilt my personal website as a static"
-                        "website using F#, Tailwind CSS and Vanilla JS"
+                        "Developed a dashboard to display various runtime statistics"
+                    ] |> concat |> listElem
+                    [
+                        "Developed and maintained REST APIs, ran performance tests"
+                        "using JMeter"
+                    ] |> concat |> listElem
+                    [
+                        "Developed a module to create RFP Bid Grid - an"
+                        "excel sheet created at runtime using Apache POI"
+                    ] |> concat |> listElem
+                    [
+                        "Worked with teams based in the US and Australia"
+                        "and using Scrum agile methodology"
                     ] |> concat |> listElem
                     Html.li [
                         prop.children [
@@ -123,119 +141,88 @@ let experienceList: Experience list =
         }
         {
             Title = "Meow Blogging Engine"
-            Duration = "2015"
+            Duration = "March-2015 - August-2015"
             Summary = "Personal project on building blogging engine"
             Highlights = 
                 [
                     [
-                        "Rebuilt my personal website as a static"
-                        "website using F#, Tailwind CSS and Vanilla JS"
+                        "A blogging engine consisting of a REST API"
+                        "for querying and modifying flat-file blogs"
+                        "and a single page application (SPA) in the"
+                        "front-end"
                     ] |> concat |> listElem
                     [
-                        "Project is now archived. Links: " |> listElem
-                        [
-                            "Meow: The core blogging engine" |> listElem
-                            [
-                                [
-                                    Html.text "Link: "
-                                    anchor (
-                                        "https://github.com/sumeetdas/Meow", 
-                                        "https://github.com/sumeetdas/Meow"
-                                    )
-                                ] |> listElemHtml
-                            ] |> unorderedList
-                        ] |> unorderedList
-                    ] |> unorderedList
+                        "Enables various search engine bots and"
+                        "scrapers of social networking sites like"
+                        "Facebook to retrieve several key metadata"
+                        "from the blog whilst allowing developers"
+                        "to use AngularJS in the front-end"
+                    ] |> concat |> listElem
+                    [
+                        Html.text "Link: "
+                        anchor (
+                            "https://github.com/sumeetdas/Meow", 
+                            "https://github.com/sumeetdas/Meow"
+                        )
+                    ] |> listElemHtml
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
         {
-            Title = "sumeetdas.me"
-            Duration = "24-Dec-2021 - 27-Dec-2021"
-            Summary = "Rebuilt my website using F#"
+            Title = "AngularJS-JWT-OAuth2-Demo"
+            Duration = "February-2015 - August-2015"
+            Summary = "Personal project on authentication demo with Angular 1"
             Highlights = 
                 [
                     [
-                        "Rebuilt my personal website as a static"
-                        "website using F#, Tailwind CSS and Vanilla JS"
+                        "An app to demonstrate OAuth2 authentication and"
+                        "front-end route authorization using JSON Web Token"
+                        "(JWT) and Angular UI Router."
                     ] |> concat |> listElem
                     Html.li [
                         prop.children [
-                            Html.text "URL - "
-                            anchor ("https://sumeetdas.me", "https://sumeetdas.me")
+                            Html.text "Link - "
+                            anchor (
+                                "https://github.com/sumeetdas/AngularJS-JWT-OAuth2-Demo", 
+                                "https://github.com/sumeetdas/AngularJS-JWT-OAuth2-Demo"
+                            )
                         ]
                     ]
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
         {
-            Title = "sumeetdas.me"
-            Duration = "24-Dec-2021 - 27-Dec-2021"
-            Summary = "Rebuilt my website using F#"
+            Title = "Sabre Holdings"
+            Duration = "July-2012 - December-2012"
+            Summary = "Internship - Built a project dashboard"
             Highlights = 
                 [
                     [
-                        "Rebuilt my personal website as a static"
-                        "website using F#, Tailwind CSS and Vanilla JS"
+                        "Developed Project Dashboard for GDS Ticketing"
+                        "Team at Sabre Holdings, Bangalore"
                     ] |> concat |> listElem
-                    Html.li [
-                        prop.children [
-                            Html.text "URL - "
-                            anchor ("https://sumeetdas.me", "https://sumeetdas.me")
-                        ]
-                    ]
+                    [
+                        "Web app capable of adding, updating and viewing"
+                        "projects, retrieving budget data from Excel"
+                        "spreadsheets maintained by Project Managers and"
+                        "generating different types of reports in PDF"
+                        "format on the fly"
+                    ] |> concat |> listElem
+                    [
+                        "Powered by Yii, a PHP open-source MVC framework,"
+                        "MySQL database, JQuery (a JavaScript library),"
+                        "HTML5, CSS3 and various other open-source JavaScript"
+                        "and PHP libraries"
+                    ] |> concat |> listElem
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
         {
-            Title = "sumeetdas.me"
-            Duration = "24-Dec-2021 - 27-Dec-2021"
-            Summary = "Rebuilt my website using F#"
+            Title = "Bhilai Steel Plant"
+            Duration = "May 2011 - July 2011"
+            Summary = "Summer Internship"
             Highlights = 
                 [
                     [
-                        "Rebuilt my personal website as a static"
-                        "website using F#, Tailwind CSS and Vanilla JS"
+                        "Developed SMS module for C & IT Department"
                     ] |> concat |> listElem
-                    Html.li [
-                        prop.children [
-                            Html.text "URL - "
-                            anchor ("https://sumeetdas.me", "https://sumeetdas.me")
-                        ]
-                    ]
-                ] |> unorderedList |> fun elem -> [ elem ]
-        }
-        {
-            Title = "sumeetdas.me"
-            Duration = "24-Dec-2021 - 27-Dec-2021"
-            Summary = "Rebuilt my website using F#"
-            Highlights = 
-                [
-                    [
-                        "Rebuilt my personal website as a static"
-                        "website using F#, Tailwind CSS and Vanilla JS"
-                    ] |> concat |> listElem
-                    Html.li [
-                        prop.children [
-                            Html.text "URL - "
-                            anchor ("https://sumeetdas.me", "https://sumeetdas.me")
-                        ]
-                    ]
-                ] |> unorderedList |> fun elem -> [ elem ]
-        }
-        {
-            Title = "sumeetdas.me"
-            Duration = "24-Dec-2021 - 27-Dec-2021"
-            Summary = "Rebuilt my website using F#"
-            Highlights = 
-                [
-                    [
-                        "Rebuilt my personal website as a static"
-                        "website using F#, Tailwind CSS and Vanilla JS"
-                    ] |> concat |> listElem
-                    Html.li [
-                        prop.children [
-                            Html.text "URL - "
-                            anchor ("https://sumeetdas.me", "https://sumeetdas.me")
-                        ]
-                    ]
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
     ]
@@ -323,13 +310,16 @@ let educationElem (education: Education) =
     Html.div [
         prop.children [
             Html.div [
-                prop.text education.Institution
+                Html.b [
+                    prop.classes [ "text-xl" ]
+                    prop.text education.Institution
+                ]
+                Html.span [
+                    prop.text (sprintf " - %s" education.Duration)
+                ]
             ]
-            Html.div [
+            Html.b [
                 prop.text education.Course
-            ]
-            Html.div [
-                prop.text education.Duration
             ]
             Html.div [
                 education.Highlights |> unorderedList

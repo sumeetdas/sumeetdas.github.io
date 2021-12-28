@@ -60,6 +60,10 @@ let head (pageName: Page) =
             prop.type' "text/css"
             prop.href "output.css"
         ]
+        Html.link [
+            prop.rel "icon"
+            prop.href "lambda.ico"
+        ]
     ]
 
 let body (pageName: Page) (components: ReactElement list) = 
@@ -78,7 +82,7 @@ let body (pageName: Page) (components: ReactElement list) =
                 tw.``align-middle``
                 "my-auto"
                 "print:w-full"
-                "print:max-w-lg"
+                "print:max-w-xl"
             ]
             prop.children components
         ]
