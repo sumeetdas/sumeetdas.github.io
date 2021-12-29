@@ -32,6 +32,11 @@
         }
     }
 
+    /*https://stackoverflow.com/a/45883930*/
+    .css-print-hack {
+        font-family: "Computer Modern", sans-serif;
+    }
+
     html {
         font-size: 18px;
     }
