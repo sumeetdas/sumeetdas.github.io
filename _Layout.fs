@@ -73,14 +73,14 @@ let body (pageName: Page) (components: ReactElement list) =
                 tw.``flex``
                 tw.``flex-col``
                 tw.``mx-auto``
-                tw.``max-w-sm``
+                "max-w-md"
+                "mt-4"
                 tw.``md:max-w-md``
                 tw.``lg:max-w-lg``
                 tw.``xl:max-w-xl``
                 tw.``2xl:max-w-2xl``
                 tw.``justify-center``
                 tw.``align-middle``
-                "my-auto"
                 "print:w-full"
                 "print:max-w-xl"
             ]
