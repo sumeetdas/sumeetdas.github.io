@@ -18,7 +18,7 @@ let menu (pageName: Page) =
                 tw.``mx-2``
                 tw.``flex``
                 tw.``flex-col``
-                "dark:text-gray-200"
+                "text-gray-200"
                 "text-2xl"
                 "leading-8"
                 "h-14"
@@ -89,8 +89,7 @@ let body (pageName: Page) (components: ReactElement list) =
 
     Html.body [
         prop.classes [
-            "dark"
-            "dark:bg-slate-800"
+            "bg-slate-800"
         ]
         prop.children [
             Html.div [

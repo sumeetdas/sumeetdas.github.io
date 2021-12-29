@@ -5,7 +5,7 @@ open Feliz.ViewEngine
 
 let private paraClasses = 
     [
-        "dark:text-gray-200"
+        "text-gray-200"
         "lg:text-2xl"
         "my-3"
         "leading-8"
@@ -125,7 +125,7 @@ let html =
         Html.h1 [
             prop.classes [
                 "text-black"
-                "dark:text-slate-200"
+                "text-slate-200"
                 "text-5xl"
                 "text-center"
                 "my-3"
