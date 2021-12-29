@@ -59,10 +59,8 @@ let private aboutMe =
         [
             "You can follow me on GitHub and Twitter, or if you"
             "want to contact me, you can do so via Twitter DMs"
-            "(Direct Message). I'm also available on LinkedIn"
-            "but since I find the site quite depressing (nowadays more"
-            "Insta-level and corporate cringe posts),"
-            "I'm not very active there."
+            "(Direct Message). I'm also available (but not active)"
+            "on LinkedIn."
         ] |> toParaWithStr
     ]
 

@@ -233,7 +233,7 @@ let experienceList: Experience list =
 
 let experienceElem (experience: Experience) = 
     Html.div [
-        prop.classes ([ "my-4" ] @ (
+        prop.classes ([ "my-4"; "print:my-2" ] @ (
             if experience.Title.Contains "AngularJS" 
             then [ "break-before-page" ] else []))
         prop.children [
@@ -315,7 +315,7 @@ let educationList: Education list =
 
 let educationElem (education: Education) = 
     Html.div [
-        prop.classes [ "my-4" ]
+        prop.classes [ "my-4"; "print:my-2" ]
         prop.children [
             Html.div [
                 Html.b [
@@ -441,6 +441,7 @@ let resume =
     Html.div [
         prop.classes [
             "print:block"
+            "print:-mt-4"
         ]
         prop.id "resume"
         prop.children [
