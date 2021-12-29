@@ -405,10 +405,27 @@ let links =
     ]
 
 let print = 
+    let buttonClasses = 
+        [
+            "w-20"
+            "text-center"
+            "text-xl"
+            "h-12"
+            "text-gray-100"
+            "text-white"
+            "border-2"
+            "border-sky-500"
+            "bg-sky-500"
+            "font-semibold"
+            "rounded"
+            "p-2"
+            "mx-2"
+        ]
+
     Html.div [
         prop.classes [
             "flex"
-            "flex-col"
+            "flex-row"
             "mx-auto"
             "text-gray-200"
             "print:text-black"
@@ -417,22 +434,19 @@ let print =
         ]
         prop.children [
             Html.button [
-                prop.classes [
-                    "w-20"
-                    "text-center"
-                    "text-xl"
-                    "h-12"
-                    "text-gray-100"
-                    "text-white"
-                    "border-2"
-                    "border-sky-500"
-                    "bg-sky-500"
-                    "font-semibold"
-                    "rounded"
-                    "p-2"
-                ]
+                prop.classes buttonClasses
                 KeyValue ("onClick", "window.print()")
                 prop.text "Print"
+            ]
+            Html.button [
+                prop.classes buttonClasses
+                prop.children [
+                    Html.a [
+                        prop.target "_blank"
+                        prop.text "Save"
+                        prop.href "Sumeet_Das_Resume.pdf"
+                    ]
+                ]
             ]
         ]
     ]
