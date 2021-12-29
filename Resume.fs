@@ -15,9 +15,10 @@ let anchor (name: string, href: string) =
 let intro = 
     Html.div [
         prop.classes [
-            "text-5xl"
+            "text-4xl"
             "font-extrabold"
             "text-gray-200"
+            "print:text-black"
         ]
         prop.children [
             Html.h1 [
@@ -25,8 +26,8 @@ let intro =
                     "border-b-4"
                     "mb-4"
                     "pb-4"
-                    "print:mb-2"
-                    "print:pb-2"
+                    "print:mb-3"
+                    "print:pb-0"
                 ]
                 prop.text "Sumeet Das"
             ]
@@ -66,7 +67,7 @@ let experienceList: Experience list =
     [
         {
             Title = "sumeetdas.me"
-            Duration = "24-Dec-2021 - 27-Dec-2021"
+            Duration = "24-Dec-2021 - 29-Dec-2021"
             Summary = "Rebuilt my website using F#"
             Highlights = 
                 [
@@ -89,9 +90,12 @@ let experienceList: Experience list =
             Highlights = 
                 [
                     [
-                        "Implemented core features and improved performance"
-                        "of Oracle Randomization Service (ORS) by optimizing"
-                        "SQL queries"
+                        "Implemented core features in Oracle"
+                        "Randomization Service (ORS)"
+                    ] |> concat |> listElem
+                    [
+                        "Brought down API response times to SLA"
+                        "by optimizing SQL queries"
                     ] |> concat |> listElem
                     [
                         "Worked on improving translatability of"
@@ -229,14 +233,14 @@ let experienceList: Experience list =
 
 let experienceElem (experience: Experience) = 
     Html.div [
-        prop.classes [
-            "my-4"
-        ]
+        prop.classes ([ "my-4" ] @ (
+            if experience.Title.Contains "AngularJS" 
+            then [ "break-before-page" ] else []))
         prop.children [
             Html.div [
                 prop.children [
                     Html.b [
-                        prop.classes [ "text-xl" ]
+                        prop.classes [ "text-lg" ]
                         prop.text experience.Title
                     ]
                     Html.span [
@@ -259,14 +263,17 @@ let programmingExperience =
     Html.div [
         prop.classes [
             "text-gray-200"
+            "print:text-black"
         ]
         prop.children ([
             Html.h2 [
                 prop.classes [
-                    "text-3xl"
+                    "text-2xl"
                     "text-bold"
                     "border-b-2"
                     "pb-2"
+                    "print:pb-0"
+                    "print:mb-3"
                 ]
                 prop.text "Programming Experience"
             ]
@@ -308,10 +315,11 @@ let educationList: Education list =
 
 let educationElem (education: Education) = 
     Html.div [
+        prop.classes [ "my-4" ]
         prop.children [
             Html.div [
                 Html.b [
-                    prop.classes [ "text-xl" ]
+                    prop.classes [ "text-lg" ]
                     prop.text education.Institution
                 ]
                 Html.span [
@@ -331,14 +339,17 @@ let education =
     Html.div [
         prop.classes [
             "text-gray-200"
+            "print:text-black"
         ]
         prop.children ([
             Html.h2 [
                 prop.classes [
-                    "text-3xl"
+                    "text-2xl"
                     "text-bold"
                     "border-b-2"
                     "pb-2"
+                    "print:pb-0"
+                    "print:mb-3"
                 ]
                 prop.text "Education"
             ]
@@ -358,7 +369,9 @@ let links =
         let name, href = link
         Html.li [
             prop.classes [
-                "my-1"
+                "my-4"
+                "sm:my-2"
+                "print:my-0"
             ]
             prop.children [
                 Html.span [
@@ -369,20 +382,20 @@ let links =
         ]
 
     Html.div [
-        prop.classes [
-            "text-gray-200"
-            "my-4"
-        ]
+        prop.classes [ "text-gray-200"; "print:text-black" ]
         prop.children [
             Html.ul [
                 prop.children ([
                     Html.h2 [
                         prop.classes [
                             "text-gray-200"
-                            "text-3xl"
+                            "print:text-black"
+                            "text-2xl"
                             "text-bold"
                             "border-b-2"
                             "pb-2"
+                            "print:mb-3"
+                            "print:pb-0"
                         ]
                         prop.text "Links"
                     ]
@@ -398,6 +411,7 @@ let print =
             "flex-col"
             "mx-auto"
             "text-gray-200"
+            "print:text-black"
             "my-4"
             "print:hidden"
         ]
@@ -434,6 +448,14 @@ let resume =
             programmingExperience
             education
             links
+            Html.span [
+                prop.classes [ "css-print-hack" ]
+                prop.text " "
+            ]
+            Html.b [
+                prop.classes [ "css-print-hack" ]
+                prop.text " "
+            ]
         ]
     ]
 
