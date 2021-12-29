@@ -438,15 +438,15 @@ let print =
                 KeyValue ("onClick", "window.print()")
                 prop.text "Print"
             ]
-            Html.button [
-                prop.classes buttonClasses
+            Html.a [
+                prop.target "_blank"
                 prop.children [
-                    Html.a [
-                        prop.target "_blank"
+                    Html.button [
+                        prop.classes buttonClasses
                         prop.text "Save"
-                        prop.href "Sumeet_Das_Resume.pdf"
                     ]
                 ]
+                prop.href "Sumeet_Das_Resume.pdf"
             ]
         ]
     ]
