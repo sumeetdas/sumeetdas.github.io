@@ -66,6 +66,29 @@ let experienceList: Experience list =
 
     [
         {
+            Title = "Bleeter"
+            Duration = "Oct-2021 - Dec-2021"
+            Summary = "UI for GTA V's Twitter parody built using F#"
+            Highlights = 
+                [
+                    [
+                        "Built UI for GTA V's microblogging site Bleeter"
+                        "using F# (transpiled into JS via Fable compiler)"
+                        ", Tailwind CSS and React"
+                    ] |> concat |> listElem
+                    [
+                        "This app follows Elm architecture (also known as"
+                        "Model-View-Update [MVU])"
+                    ] |> concat |> listElem
+                    Html.li [
+                        prop.children [
+                            Html.text "URL - "
+                            anchor ("https://sumeetdas.me/Bleeter", "https://sumeetdas.me/Bleeter")
+                        ]
+                    ]
+                ] |> unorderedList |> fun elem -> [ elem ]
+        }
+        {
             Title = "sumeetdas.me"
             Duration = "24-Dec-2021 - 29-Dec-2021"
             Summary = "Rebuilt my website using F#"
@@ -235,7 +258,7 @@ let experienceElem (experience: Experience) =
     Html.div [
         prop.classes ([ "my-4"; "print:my-2" ] @ (
             if experience.Title.Contains "AngularJS" 
-            then [ "break-before-page" ] else []))
+            then [ (*"break-before-page"*) ] else []))
         prop.children [
             Html.div [
                 prop.children [
@@ -433,11 +456,6 @@ let print =
             "print:hidden"
         ]
         prop.children [
-            Html.button [
-                prop.classes buttonClasses
-                KeyValue ("onClick", "window.print()")
-                prop.text "Print"
-            ]
             Html.a [
                 prop.target "_blank"
                 prop.children [

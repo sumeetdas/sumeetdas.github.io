@@ -41,14 +41,9 @@ let private aboutMe =
     [
         [
             [
-                "I'm a software developer who writes Java code for a living."
-                "I love functional programming and writing code in F#."
-                "I have even developed this website "
-            ] |> toText
-            getLink ("https://github.com/sumeetdas/sumeetdas.github.io", "using F#")
-            [
-                ". My current interests are - F# / Rust / Distributed Systems / Developing"
-                "Mobile and Web apps."
+                "I'm a software developer who writes Java code for a living. "
+                "My interests are - writing functional code in F# and Rust, "
+                "Distributed Systems, and Developing Mobile and Web apps."
             ] |> toText
         ] |> toParaWithElems
         [
