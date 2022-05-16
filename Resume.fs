@@ -66,6 +66,26 @@ let experienceList: Experience list =
 
     [
         {
+            Title = "DasDocs"
+            Duration = "May-2022 - Present"
+            Summary = ""
+            Highlights = 
+                [
+                    [
+                        "Website I created to share my technical knowledge."
+                    ] |> concat |> listElem
+                    [
+                        "Built using F# and Fable compiler"
+                    ] |> concat |> listElem
+                    Html.li [
+                        prop.children [
+                            Html.text "URL - "
+                            anchor ("https://dasdocs.com", "https://dasdocs.com")
+                        ]
+                    ]
+                ] |> unorderedList |> fun elem -> [ elem ]
+        }
+        {
             Title = "Bleeter"
             Duration = "Oct-2021 - Dec-2021"
             Summary = "UI for GTA V's Twitter parody built using F#"
@@ -258,7 +278,7 @@ let experienceElem (experience: Experience) =
     Html.div [
         prop.classes ([ "my-4"; "print:my-2" ] @ (
             if experience.Title.Contains "AngularJS" 
-            then [ (*"break-before-page"*) ] else []))
+            then [ "break-before-page" ] else []))
         prop.children [
             Html.div [
                 prop.children [
