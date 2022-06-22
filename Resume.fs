@@ -68,11 +68,11 @@ let experienceList: Experience list =
         {
             Title = "DasDocs"
             Duration = "May-2022 - Present"
-            Summary = ""
+            Summary = "Website to share my technical knowledge"
             Highlights = 
                 [
                     [
-                        "Website I created to share my technical knowledge."
+                        "Have created this website to share my technical knowledge."
                     ] |> concat |> listElem
                     [
                         "Built using F# and Fable compiler"
@@ -145,8 +145,12 @@ let experienceList: Experience list =
                         "the product across multiple microservices"
                     ] |> concat |> listElem
                     [
+                        "Mentored interns and part of interview panel"
+                        "to recruit new employees"
+                    ] |> concat |> listElem
+                    [
                         "Tech used: Kubernetes, Liquibase, Bash scripts,"
-                        "Oracle DB, Java EE, git, OCI"
+                        "Oracle DB, Java EE, git, OCI, GraphQL"
                     ] |> concat |> listElem
                     [
                         Html.text "Product URL - "
