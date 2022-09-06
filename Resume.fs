@@ -66,6 +66,38 @@ let experienceList: Experience list =
 
     [
         {
+            Title = "Oracle India Pvt. Ltd."
+            Duration = "April-2018 - Present"
+            Summary = "Working on ClinicalOne product"
+            Highlights = 
+                [
+                    [
+                        "Implemented core features in Oracle"
+                        "Randomization Service (ORS)"
+                    ] |> concat |> listElem
+                    [
+                        "Brought down API response times to SLA"
+                        "by optimizing SQL queries"
+                    ] |> concat |> listElem
+                    [
+                        "Worked on improving translatability of"
+                        "the product across multiple microservices"
+                    ] |> concat |> listElem
+                    [
+                        "Mentored interns and part of interview panel"
+                        "to recruit new employees"
+                    ] |> concat |> listElem
+                    [
+                        "Tech used: Kubernetes, Liquibase, Bash scripts,"
+                        "Oracle DB, Java EE, git, OCI, GraphQL, Kafka, Zookeeper"
+                    ] |> concat |> listElem
+                    [
+                        Html.text "Product URL - "
+                        anchor ("https://www.oracle.com/industries/life-sciences/clinical-one/", "https://www.oracle.com/industries/life-sciences/clinical-one/")
+                    ] |> listElemHtml
+                ] |> unorderedList |> fun elem -> [ elem ]
+        }
+        {
             Title = "DasDocs"
             Duration = "May-2022 - Present"
             Summary = "Website to share my technical knowledge"
@@ -124,38 +156,6 @@ let experienceList: Experience list =
                             anchor ("https://sumeetdas.me", "https://sumeetdas.me")
                         ]
                     ]
-                ] |> unorderedList |> fun elem -> [ elem ]
-        }
-        {
-            Title = "Oracle India Pvt. Ltd."
-            Duration = "April-2018 - Present"
-            Summary = "Working on ClinicalOne product"
-            Highlights = 
-                [
-                    [
-                        "Implemented core features in Oracle"
-                        "Randomization Service (ORS)"
-                    ] |> concat |> listElem
-                    [
-                        "Brought down API response times to SLA"
-                        "by optimizing SQL queries"
-                    ] |> concat |> listElem
-                    [
-                        "Worked on improving translatability of"
-                        "the product across multiple microservices"
-                    ] |> concat |> listElem
-                    [
-                        "Mentored interns and part of interview panel"
-                        "to recruit new employees"
-                    ] |> concat |> listElem
-                    [
-                        "Tech used: Kubernetes, Liquibase, Bash scripts,"
-                        "Oracle DB, Java EE, git, OCI, GraphQL"
-                    ] |> concat |> listElem
-                    [
-                        Html.text "Product URL - "
-                        anchor ("https://www.oracle.com/industries/life-sciences/clinical-one/", "https://www.oracle.com/industries/life-sciences/clinical-one/")
-                    ] |> listElemHtml
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
         {
@@ -281,7 +281,7 @@ let experienceList: Experience list =
 let experienceElem (experience: Experience) = 
     Html.div [
         prop.classes ([ "my-4"; "print:my-2" ] @ (
-            if experience.Title.Contains "AngularJS" 
+            if experience.Title.Contains "Meow Blogging" 
             then [ "break-before-page" ] else []))
         prop.children [
             Html.div [
