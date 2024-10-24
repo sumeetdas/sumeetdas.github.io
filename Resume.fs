@@ -2,6 +2,8 @@ module Resume
 
 open Feliz.ViewEngine
 
+let concat (parts: string list) = parts |> String.concat " "
+
 let anchor (name: string, href: string) = 
     Html.a [
         prop.classes [
@@ -31,8 +33,55 @@ let intro =
                 ]
                 prop.text "Sumeet Das"
             ]
+            Html.p [
+                prop.classes [
+                    // "text-lg"
+                    // "mt-4"
+                    // "text-gray-400"
+                    // "print:text-black"
+                    "text-sm" 
+                    "mt-4"
+                    "text-white"  // White text for better contrast
+                    "font-light"  // Light weight for a subtle look
+                    "leading-relaxed"  // Spacing for better readability
+                    "print:text-black" // Black text for print
+                ]   
+                [
+                    "Experienced Software Engineer with over 11 years of expertise in "
+                    "full-stack development, cloud infrastructure, and DevOps. Proficient in "
+                    "Java, AWS, and Terraform, with a focus on designing scalable, "
+                    "high-performance systems. Passionate about driving innovation through "
+                    "automation and modern tech stacks to deliver robust solutions."
+                ] |> concat |> prop.text
+            ]
         ]
     ]
+
+
+// Summary:
+
+
+// Skills:
+// Languages:
+
+//     Java, Python, JavaScript, SQL, F#
+
+// Cloud & DevOps:
+
+//     AWS (EC2, S3, Lambda, Step Functions), Azure (Azure Data Factory), Docker, Kubernetes, Terraform
+
+// Frameworks:
+
+//     Spring Boot, Node.js, React.js, Angular, Flask
+
+// Databases:
+
+//     PostgreSQL, AzureSQL, Oracle DB
+
+// Tools:
+
+//     Git, Jenkins, JIRA, Confluence
+
 
 type Experience = 
     {
@@ -51,7 +100,7 @@ let unorderedList (listItems: ReactElement list) =
         prop.children listItems
     ]
 
-let experienceList: Experience list = 
+let workExperienceList: Experience list = 
     let listElem (text: string) = 
         Html.li [
             prop.text text
@@ -62,11 +111,9 @@ let experienceList: Experience list =
             prop.children children
         ]
 
-    let concat (parts: string list) = parts |> String.concat " "
-
     [
         {
-            Title = "Delphix (acquired by Perforce)"
+            Title = "Delphix (acquired by Perforce) - Remote"
             Duration = "May-2024 - Present"
             Summary = "Worked on DCS for Azure product"
             Highlights = 
@@ -97,7 +144,7 @@ let experienceList: Experience list =
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
         {
-            Title = "Delphix (acquired by Perforce)"
+            Title = "Delphix (acquired by Perforce) - Remote"
             Duration = "November-2022 - April-2024"
             Summary = "Worked on DCS for Salesforce product"
             Highlights = 
@@ -109,6 +156,10 @@ let experienceList: Experience list =
                     [
                         "Developed new features such as masking report "
                         "and enhanced parity with Delphix's Continuous Compliance product."
+                    ] |> concat |> listElem
+                    [
+                        "Developed in-depth knowledge of Salesforce architecture, "
+                        "including metadata, data APIs, and SOQL queries."
                     ] |> concat |> listElem
                     [
                         "Facilitated the onboarding of a new customer by resolving product "
@@ -132,7 +183,7 @@ let experienceList: Experience list =
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
         {
-            Title = "Oracle India Pvt. Ltd."
+            Title = "Oracle India Pvt. Ltd. - Hyderabad, India"
             Duration = "April-2018 - October-2022"
             Summary = "Working on ClinicalOne product"
             Highlights = 
@@ -164,25 +215,89 @@ let experienceList: Experience list =
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
         {
-            Title = "DasDocs"
-            Duration = "May-2022 - Present"
-            Summary = "Website to share my technical knowledge"
+            Title = "Oracle India Pvt. Ltd. - Remote"
+            Duration = "July-2013 - March-2018"
+            Summary = "Worked on ClearTrial product"
             Highlights = 
                 [
                     [
-                        "Have created this website to share my technical knowledge."
+                        "Developed a dashboard to display various runtime statistics"
                     ] |> concat |> listElem
                     [
-                        "Built using F# and Fable compiler"
+                        "Developed and maintained REST APIs, ran performance tests"
+                        "using JMeter"
+                    ] |> concat |> listElem
+                    [
+                        "Developed a module to create RFP Bid Grid - an"
+                        "excel sheet created at runtime using Apache POI"
+                    ] |> concat |> listElem
+                    [
+                        "Worked with teams based in the US and Australia"
+                        "and using Scrum agile methodology"
                     ] |> concat |> listElem
                     Html.li [
                         prop.children [
-                            Html.text "URL - "
-                            anchor ("https://dasdocs.com", "https://dasdocs.com")
+                            Html.text "Product URL - "
+                            anchor (
+                                "https://www.oracle.com/in/industries/life-sciences/cleartrial-portfolio-planning.html", 
+                                "https://www.oracle.com/in/industries/life-sciences/cleartrial-portfolio-planning.html"
+                            )
                         ]
                     ]
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
+        {
+            Title = "Sabre Holdings - Bangalore, India"
+            Duration = "July-2012 - December-2012"
+            Summary = "Internship - Built a project dashboard"
+            Highlights = 
+                [
+                    [
+                        "Developed Project Dashboard for GDS Ticketing"
+                        "Team at Sabre Holdings, Bangalore"
+                    ] |> concat |> listElem
+                    [
+                        "Web app capable of adding, updating and viewing"
+                        "projects, retrieving budget data from Excel"
+                        "spreadsheets maintained by Project Managers and"
+                        "generating different types of reports in PDF"
+                        "format on the fly"
+                    ] |> concat |> listElem
+                    [
+                        "Powered by Yii, a PHP open-source MVC framework,"
+                        "MySQL database, JQuery (a JavaScript library),"
+                        "HTML5, CSS3 and various other open-source JavaScript"
+                        "and PHP libraries"
+                    ] |> concat |> listElem
+                ] |> unorderedList |> fun elem -> [ elem ]
+        }
+        {
+            Title = "Bhilai Steel Plant - Bhilai, India"
+            Duration = "May 2011 - July 2011"
+            Summary = "Summer Internship"
+            Highlights = 
+                [
+                    [
+                        "Developed SMS module for C & IT Department"
+                    ] |> concat |> listElem
+                ] |> unorderedList |> fun elem -> [ elem ]
+        }
+    ]
+
+let personalProjectsList: Experience list = 
+    let listElem (text: string) = 
+        Html.li [
+            prop.text text
+        ]
+    
+    let listElemHtml (children: ReactElement list) = 
+        Html.li [
+            prop.children children
+        ]
+
+    let concat (parts: string list) = parts |> String.concat " "
+
+    [
         {
             Title = "Bleeter"
             Duration = "Oct-2021 - Dec-2021"
@@ -220,38 +335,6 @@ let experienceList: Experience list =
                         prop.children [
                             Html.text "URL - "
                             anchor ("https://sumeetdas.me", "https://sumeetdas.me")
-                        ]
-                    ]
-                ] |> unorderedList |> fun elem -> [ elem ]
-        }
-        {
-            Title = "Oracle India Pvt. Ltd."
-            Duration = "July-2013 - March-2018"
-            Summary = "Worked on ClearTrial product"
-            Highlights = 
-                [
-                    [
-                        "Developed a dashboard to display various runtime statistics"
-                    ] |> concat |> listElem
-                    [
-                        "Developed and maintained REST APIs, ran performance tests"
-                        "using JMeter"
-                    ] |> concat |> listElem
-                    [
-                        "Developed a module to create RFP Bid Grid - an"
-                        "excel sheet created at runtime using Apache POI"
-                    ] |> concat |> listElem
-                    [
-                        "Worked with teams based in the US and Australia"
-                        "and using Scrum agile methodology"
-                    ] |> concat |> listElem
-                    Html.li [
-                        prop.children [
-                            Html.text "Product URL - "
-                            anchor (
-                                "https://www.oracle.com/in/industries/life-sciences/cleartrial-portfolio-planning.html", 
-                                "https://www.oracle.com/in/industries/life-sciences/cleartrial-portfolio-planning.html"
-                            )
                         ]
                     ]
                 ] |> unorderedList |> fun elem -> [ elem ]
@@ -306,48 +389,12 @@ let experienceList: Experience list =
                     ]
                 ] |> unorderedList |> fun elem -> [ elem ]
         }
-        {
-            Title = "Sabre Holdings"
-            Duration = "July-2012 - December-2012"
-            Summary = "Internship - Built a project dashboard"
-            Highlights = 
-                [
-                    [
-                        "Developed Project Dashboard for GDS Ticketing"
-                        "Team at Sabre Holdings, Bangalore"
-                    ] |> concat |> listElem
-                    [
-                        "Web app capable of adding, updating and viewing"
-                        "projects, retrieving budget data from Excel"
-                        "spreadsheets maintained by Project Managers and"
-                        "generating different types of reports in PDF"
-                        "format on the fly"
-                    ] |> concat |> listElem
-                    [
-                        "Powered by Yii, a PHP open-source MVC framework,"
-                        "MySQL database, JQuery (a JavaScript library),"
-                        "HTML5, CSS3 and various other open-source JavaScript"
-                        "and PHP libraries"
-                    ] |> concat |> listElem
-                ] |> unorderedList |> fun elem -> [ elem ]
-        }
-        {
-            Title = "Bhilai Steel Plant"
-            Duration = "May 2011 - July 2011"
-            Summary = "Summer Internship"
-            Highlights = 
-                [
-                    [
-                        "Developed SMS module for C & IT Department"
-                    ] |> concat |> listElem
-                ] |> unorderedList |> fun elem -> [ elem ]
-        }
     ]
 
 let experienceElem (experience: Experience) = 
     Html.div [
         prop.classes ([ "my-4"; "print:my-2" ] @ (
-            if experience.Title.Contains "Bleeter" || experience.Title.Contains "Bhilai Steel" 
+            if experience.Title.Contains "xyz" 
             then [ "break-before-page" ] else []))
         prop.children [
             Html.div [
@@ -372,7 +419,7 @@ let experienceElem (experience: Experience) =
         ]
     ]
 
-let programmingExperience = 
+let workExperience = 
     Html.div [
         prop.classes [
             "text-gray-200"
@@ -388,9 +435,30 @@ let programmingExperience =
                     "print:pb-0"
                     "print:mb-3"
                 ]
-                prop.text "Programming Experience"
+                prop.text "Work Experience"
             ]
-        ] @ (experienceList |> List.map experienceElem))
+        ] @ (workExperienceList |> List.map experienceElem))
+    ]
+
+let personalProjects = 
+    Html.div [
+        prop.classes [
+            "text-gray-200"
+            "print:text-black"
+        ]
+        prop.children ([
+            Html.h2 [
+                prop.classes [
+                    "text-2xl"
+                    "text-bold"
+                    "border-b-2"
+                    "pb-2"
+                    "print:pb-0"
+                    "print:mb-3"
+                ]
+                prop.text "Personal Projects"
+            ]
+        ] @ (personalProjectsList |> List.map experienceElem))
     ]
 
 type Education = 
@@ -463,6 +531,7 @@ let education =
                     "pb-2"
                     "print:pb-0"
                     "print:my-3"
+                    // "break-before-page"
                 ]
                 prop.text "Education"
             ]
@@ -568,7 +637,8 @@ let resume =
         prop.id "resume"
         prop.children [
             intro
-            programmingExperience
+            workExperience
+            personalProjects
             education
             links
             Html.span [
