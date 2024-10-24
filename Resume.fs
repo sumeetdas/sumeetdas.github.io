@@ -66,8 +66,74 @@ let experienceList: Experience list =
 
     [
         {
+            Title = "Delphix (acquired by Perforce)"
+            Duration = "May-2024 - Present"
+            Summary = "Worked on DCS for Azure product"
+            Highlights = 
+                [
+                    [
+                        "Collaborated with the team in the US "
+                        "to get onboarded to the product"
+                    ] |> concat |> listElem
+                    [
+                        "Contributed to the General Availability (GA) release of the Discovery service, "
+                        "which profiles data and recommends suitable masking algorithms."
+                    ] |> concat |> listElem
+                    [
+                        "Worked on various Azure Data Factory templates that allow "
+                        "profiling and masking of various data sources such as Snowflake and Azure SQL."
+                    ] |> concat |> listElem
+                    [
+                        "Tech used: Azure (ADF, AppConfig, AzureSQL, AKS), "
+                        "Java (Spring Boot, Mockito)"
+                    ] |> concat |> listElem
+                    [
+                        Html.text "Product URL - "
+                        anchor (
+                            "https://www.delphix.com/solutions/microsoft", 
+                            "https://www.delphix.com/solutions/microsoft"
+                        )
+                    ] |> listElemHtml
+                ] |> unorderedList |> fun elem -> [ elem ]
+        }
+        {
+            Title = "Delphix (acquired by Perforce)"
+            Duration = "November-2022 - April-2024"
+            Summary = "Worked on DCS for Salesforce product"
+            Highlights = 
+                [
+                    [
+                        "Helped establish the newly formed India team "
+                        "focused on DCS for Salesforce."
+                    ] |> concat |> listElem
+                    [
+                        "Developed new features such as masking report "
+                        "and enhanced parity with Delphix's Continuous Compliance product."
+                    ] |> concat |> listElem
+                    [
+                        "Facilitated the onboarding of a new customer by resolving product "
+                        "issues and providing dedicated support."
+                    ] |> concat |> listElem
+                    [
+                        "Strengthened the India team by interviewing "
+                        "and onboarding new members."
+                    ] |> concat |> listElem
+                    [
+                        "Tech used: AWS (Cloudwatch, SQS, SNS, S3, Step Functions, Lambda, Batch Jobs), "
+                        "Python (Flask, Pytest), Terraform, Java, Angular, GraphQL"
+                    ] |> concat |> listElem
+                    [
+                        Html.text "Product URL - "
+                        anchor (
+                            "https://www.delphix.com/video/automated-masking-salesforce-sandboxes", 
+                            "https://www.delphix.com/video/automated-masking-salesforce-sandboxes"
+                        )
+                    ] |> listElemHtml
+                ] |> unorderedList |> fun elem -> [ elem ]
+        }
+        {
             Title = "Oracle India Pvt. Ltd."
-            Duration = "April-2018 - Present"
+            Duration = "April-2018 - October-2022"
             Summary = "Working on ClinicalOne product"
             Highlights = 
                 [
@@ -281,7 +347,7 @@ let experienceList: Experience list =
 let experienceElem (experience: Experience) = 
     Html.div [
         prop.classes ([ "my-4"; "print:my-2" ] @ (
-            if experience.Title.Contains "Meow Blogging" 
+            if experience.Title.Contains "Bleeter" || experience.Title.Contains "Bhilai Steel" 
             then [ "break-before-page" ] else []))
         prop.children [
             Html.div [
@@ -351,11 +417,11 @@ let educationList: Education list =
             Duration = "Aug 2009 - June 2013"
             Highlights = [
                 listItem "Graduated with First Class Honors and a GPA of 7.61"
-                [
-                    "Electives completed: Fuzzy Logic, Image Processing,"
-                    "Effective Public Speaking, Object Oriented"
-                    "Programming, International Relations"
-                ] |> String.concat " " |> listItem
+                // [
+                //     "Electives completed: Fuzzy Logic, Image Processing,"
+                //     "Effective Public Speaking, Object Oriented"
+                //     "Programming, International Relations"
+                // ] |> String.concat " " |> listItem
             ]
         }
     ]
@@ -396,7 +462,7 @@ let education =
                     "border-b-2"
                     "pb-2"
                     "print:pb-0"
-                    "print:mb-3"
+                    "print:my-3"
                 ]
                 prop.text "Education"
             ]
