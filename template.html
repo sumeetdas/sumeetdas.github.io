@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <!-- <link href="style.css" rel="stylesheet"> -->
+     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+    <div class="container mx-auto px-8 py-10">
+        <!-- Header Section -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-gray-200">{{ name }}</h1>
+            <p class="text-gray-400">{{ email }} | {{ linkedin }} | {{ github }} | {{ x }}</p>
+            <!-- Add a brief summary below the contact info -->
+            <p class="mt-3 font-light text-gray-700">{{ summary }}</p>
+        </header>
+
+        <!-- Skills Section -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">Skills</h2>
+            <ul class="list-disc list-inside">
+                {{ for skill in skills }}
+                <li>{{ skill }}</li>
+                {{ end }}
+            </ul>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">Work Experience</h2>
+            {{ for exp in experiences }}
+            <div class="mb-6">
+                <div class="flex justify-between">
+                    <p class="font-semibold">{{ exp.Company }} | {{ exp.Title }}</p>
+                    <p class="text-gray-600">{{ exp.Location }} | {{ exp.Duration }}</p>
+                </div>
+                <p class="mt-2 text-white font-light leading-relaxed">{{ exp.Summary }}</p>
+                <ul class="list-disc list-inside">
+                    {{ for highlight in exp.Highlights }}
+                    <li>{{ highlight }}</li>
+                    {{ end }}
+                </ul>
+                {{ if exp.ProductUrl }}
+                <p class="mt-2">
+                    Product Link - <a href="{{ exp.ProductUrl }}" class="text-blue-500 underline">{{ exp.ProductUrl }}</a>
+                </p>
+                {{ end }}
+            </div>
+            {{ end }}
+        </section>
+
+        <!-- Projects Section -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">Projects</h2>
+            {{ for project in projects }}
+            <div class="mb-6">
+                <div class="flex justify-between">
+                    <p class="font-semibold">{{ project.Title }}</p>
+                    {{ if project.ProductUrl }}
+                    <a href="{{project.ProductUrl}}" class="italic">{{ project.ProductUrl }}</a>
+                    {{ end }}
+                </div>
+                <p>
+                    <ul>
+                        {{ for highlight in project.highlights }}
+                        <li>{{ highlight }}</li>
+                        {{ end }}
+                    </ul>
+                </p>
+            </div>
+            {{ end }}
+        </section>
+
+        <!-- Education Section -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2 text-gray-300">Education</h2>
+            <div class="flex justify-between">
+                <p class="font-semibold">{{ education.degree }}</p>
+                <p class="text-gray-600">{{ education.location }} | {{ education.graduation }}</p>
+            </div>
+            <p class="italic">{{ education.details }}</p>
+        </section>
+        
+    </div>
+</body>
+</html>

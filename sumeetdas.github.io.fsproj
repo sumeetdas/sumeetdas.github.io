@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Feliz.ViewEngine" Version="0.24.0" />
+    <PackageReference Include="Scriban" Version="5.10.0" />
     <PackageReference Include="Zanaptak.TypedCssClasses" Version="1.0.0" />
   </ItemGroup>
 
