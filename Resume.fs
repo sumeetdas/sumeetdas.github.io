@@ -12,7 +12,9 @@ type Experience = {
     Location: string
     Summary: string
     Highlights: string list
-    ProductUrl: string option
+    /// Optional field but can't use option since Scriban
+    /// does not support it. Instead, use "" for None
+    ProductUrl: string
 }
 
 type PersonalProject = {
@@ -53,6 +55,10 @@ let LINKEDIN: string = "https://in.linkedin.com/in/das-sumeet"
 let EMAIL: string = "sumeetdasinterview@gmail.com"
 
 let X: string = "https://x.com/_sumeetdas"
+
+let IMAGE_URL: string = "myphoto.jpg"
+
+let QR_CODE_URL: string = "qr.png"
 
 let skills: Skills list = [
     {
@@ -106,7 +112,7 @@ let workExperiences: Experience list = [
                 "Java (Spring Boot, Mockito)"
             ] |> concat
         ]
-        ProductUrl = Some "https://www.delphix.com/solutions/microsoft"
+        ProductUrl = "https://www.delphix.com/solutions/microsoft"
     }
     {
         Company = "Delphix (acquired by Perforce)"
@@ -140,7 +146,7 @@ let workExperiences: Experience list = [
                 "Python (Flask, Pytest), Terraform, Java, Angular, GraphQL"
             ] |> concat
         ] 
-        ProductUrl = Some "https://www.delphix.com/video/automated-masking-salesforce-sandboxes"
+        ProductUrl = "https://www.delphix.com/video/automated-masking-salesforce-sandboxes"
     }
     {
         Company = "Oracle India Pvt. Ltd."
@@ -170,7 +176,7 @@ let workExperiences: Experience list = [
                 "Oracle DB, Java EE, git, OCI, GraphQL, Kafka, Zookeeper"
             ] |> concat
         ]
-        ProductUrl = Some "https://www.oracle.com/in/life-sciences/clinical-trials/"
+        ProductUrl = "https://www.oracle.com/in/life-sciences/clinical-trials/"
     }
     {
         Company = "Oracle India Pvt. Ltd."
@@ -195,7 +201,7 @@ let workExperiences: Experience list = [
                 "using Scrum agile methodology"
             ] |> concat
         ]
-        ProductUrl = Some "https://www.oracle.com/in/life-sciences/clinical-trials/cleartrial-portfolio-planning/"
+        ProductUrl = "https://www.oracle.com/in/life-sciences/clinical-trials/cleartrial-portfolio-planning/"
     }
     {
         Company = "Sabre Holdings"
@@ -222,7 +228,7 @@ let workExperiences: Experience list = [
                 "and PHP libraries"
             ] |> concat
         ]
-        ProductUrl = None 
+        ProductUrl = "" 
     }
     {
         Company = "Bhilai Steel Plant"
@@ -233,7 +239,7 @@ let workExperiences: Experience list = [
         Highlights = [
             "Developed SMS module for C & IT Department"
         ]
-        ProductUrl = None
+        ProductUrl = ""
     }
 ]
 
@@ -324,16 +330,19 @@ let educationList: Education list =
 
 // Data binding using anonymous records
 let data = {| 
+    // using imageUrl did not work, so using imageurl
+    imageurl = IMAGE_URL
     name = NAME
     github = GITHUB
     linkedin = LINKEDIN
     email = EMAIL
     x = X
+    qr_code_url = QR_CODE_URL
     summary = SUMMARY
     skills = skills
     experiences = workExperiences 
-    personalProjects = personalProjectsList
-    education = educationList
+    personal_projects = personalProjectsList
+    education_list = educationList
 |}
 
 // Load the template from 'template.html' file
@@ -344,4 +353,7 @@ let templateString = File.ReadAllText("template.html")
 let template = Template.Parse(templateString)
 let result = template.Render(data)
 
-printfn "%s" result
+// printfn "%s" result
+
+let html: string = result
+

@@ -1,50 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
-    <!-- <link href="style.css" rel="stylesheet"> -->
-     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-</head>
-<body class="bg-white text-gray-800">
-    <div class="container mx-auto px-8 py-10">
-        <!-- Header Section -->
-        <header class="text-center mb-8">
-            <h1 class="text-4xl font-extrabold text-gray-200">{{ name }}</h1>
-            <p class="text-gray-400">{{ email }} | {{ linkedin }} | {{ github }} | {{ x }}</p>
-            <!-- Add a brief summary below the contact info -->
-            <p class="mt-3 font-light text-gray-700">{{ summary }}</p>
-        </header>
+<div class="flex flex-row mx-auto text-gray-200 my-4 print:hidden">
+    <a href="Sumeet_Das_Resume.pdf" target="_blank">
+        <button class="w-20 text-center text-xl h-12 text-gray-100 text-white border-2 border-sky-500 bg-sky-500 font-semibold rounded p-2 mx-2">
+            Save
+        </button>
+    </a>
+</div>
+<div class="container text-gray-200 print:bg-white print:text-black mx-auto px-8 py-10 print:p-0 print:mx-2 print:pt-0 print:mt-0">
+    <!-- Header Section -->
+    <header class="flex justify-between 
+    items-center w-full max-w-screen-lg mx-auto mb-4 p-4 bg-gray-900 print:w-full print:p-0 print:mb-2 print:mt-0 print:flex-row print:space-x-4">
+        <!-- Left Side: Profile Image, Name, Social Links, and Summary -->
+        <div class="flex items-center space-x-4">
+            <!-- Profile Image -->
+            <img src="{{ imageurl }}" 
+                alt="Profile Image" 
+                class="w-18 h-24 mr-6 print:mr-0 print:mb-2" />
+            
+            <!-- Name and Links -->
+            <div>
+                <h1 class="text-2xl font-extrabold 
+                    text-gray-200 print:text-lg print:text-black">
+                    {{ name }}
+                </h1>
+                <p class="text-gray-300 text-sm print:text-xs mt-1 print:text-black">
+                    <a href="mailto:{{ email }}" class="underline  print:text-black">Email</a> 
+                    | <a href="{{ linkedin }}" class="underline print:text-black">LinkedIn</a> 
+                    | <a href="{{ github }}" class="underline print:text-black">GitHub</a> 
+                    | <a href="{{ x }}" class="underline print:text-black">X</a>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Right Side: QR Code -->
+        <div class="flex items-center justify-center">
+            <img 
+                src="{{ qr_code_url }}" 
+                alt="QR Code" 
+                class="w-16 h-16" />
+        </div>
+    </header>    
 
-        <!-- Skills Section -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-2">Skills</h2>
-            <ul class="list-disc list-inside">
+    <!-- Professional Summary Section -->
+    <div class="mb-6 print:mb-2">
+        <h2 class="text-2xl font-semibold mb-2 print:text-base">Professional Summary</h2>
+        <p class="text-gray-300 print:text-black">
+            {{ summary }}
+        </p>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="w-full max-w-screen-lg mx-auto print:p-0 print:w-full">
+        <section class="mb-6 print:mb-2">
+            <h2 class="text-2xl font-semibold mb-2 text-gray-200 print:text-base print:text-black">Skills</h2>
+            <ul class="ml-5 list-disc text-gray-200 mt-2 print:mt-0 print:text-black">
                 {{ for skill in skills }}
-                <li>{{ skill }}</li>
+                <li>
+                    <!-- 
+                    Do not use CamelCase for field names like 'Category'.
+                    That won't work. Use snake_case instead.
+                    -->
+                    <span class="text-white font-semibold print:text-black">{{ skill.category }}:</span> 
+                    {{ for item in skill.items; last = for.last }}
+                        {{ item }}{{ if !last }}, {{ end }}
+                    {{ end }}
+                </li>
                 {{ end }}
             </ul>
         </section>
 
         <!-- Experience Section -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-2">Work Experience</h2>
+        <section class="mb-6 print:mb-2">
+            <h2 class="text-2xl font-semibold mb-2 print:text-base">Work Experience</h2>
             {{ for exp in experiences }}
-            <div class="mb-6">
-                <div class="flex justify-between">
-                    <p class="font-semibold">{{ exp.Company }} | {{ exp.Title }}</p>
-                    <p class="text-gray-600">{{ exp.Location }} | {{ exp.Duration }}</p>
+            <div class="mb-6 print:mt-2">
+                <div class="text-base text-gray-200 print:text-xs print:text-black">
+                    <span class="font-semibold">{{ exp.company }}</span> | <span>{{ exp.designation }}</span>
                 </div>
-                <p class="mt-2 text-white font-light leading-relaxed">{{ exp.Summary }}</p>
+                <div class="flex justify-between">
+                    <p class="font-semibold">{{ exp.location }}</p>
+                    <p class="text-gray-300 print:text-black">{{ exp.duration }}</p>
+                </div>
+                <p class="mt-2 text-white font-light leading-relaxed print:text-black">{{ exp.summary }}</p>
                 <ul class="list-disc list-inside">
-                    {{ for highlight in exp.Highlights }}
+                    {{ for highlight in exp.highlights }}
                     <li>{{ highlight }}</li>
                     {{ end }}
                 </ul>
-                {{ if exp.ProductUrl }}
+                {{ if exp.product_url != "" }}
                 <p class="mt-2">
-                    Product Link - <a href="{{ exp.ProductUrl }}" class="text-blue-500 underline">{{ exp.ProductUrl }}</a>
+                    Product Link - <a href="{{ exp.product_url }}" class="text-blue-500 underline">{{ exp.product_url }}</a>
                 </p>
                 {{ end }}
             </div>
@@ -52,18 +96,20 @@
         </section>
 
         <!-- Projects Section -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-2">Projects</h2>
-            {{ for project in projects }}
+        <section class="mb-6 print:mb-2">
+            <h2 class="text-2xl font-semibold mb-2 print:text-base">Projects</h2>
+            {{ for project in personal_projects }}
             <div class="mb-6">
                 <div class="flex justify-between">
-                    <p class="font-semibold">{{ project.Title }}</p>
-                    {{ if project.ProductUrl }}
-                    <a href="{{project.ProductUrl}}" class="italic">{{ project.ProductUrl }}</a>
-                    {{ end }}
+                    <p class="font-semibold">{{ project.name }}</p>
+                    <span>{{ project.duration }}</span>
+                </div>
+                <div class="flex justify-between">
+                    <p>{{ project.summary}}</p>
+                    <a href="{{project.project_url}}" class="italic">{{ project.project_url }}</a>
                 </div>
                 <p>
-                    <ul>
+                    <ul class="list-disc list-inside">
                         {{ for highlight in project.highlights }}
                         <li>{{ highlight }}</li>
                         {{ end }}
@@ -74,15 +120,24 @@
         </section>
 
         <!-- Education Section -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-2 text-gray-300">Education</h2>
+        <section class="mb-6 print:mb-2">
+            <h2 class="text-2xl font-semibold mb-2 text-gray-200 print:text-base">Education</h2>
+            {{ for education in education_list }}
             <div class="flex justify-between">
-                <p class="font-semibold">{{ education.degree }}</p>
-                <p class="text-gray-600">{{ education.location }} | {{ education.graduation }}</p>
+                <p class="font-semibold">{{ education.institution }}</p>
+                <p class="text-gray-300 print:text-black">{{ education.duration }}</p>
             </div>
-            <p class="italic">{{ education.details }}</p>
+            <div class="flex justify-between">
+                <p class="font-light text-gray-300 print:text-black">{{ education.course }}</p>
+            </div>
+            <p>
+                <ul class="list-disc list-inside">
+                    {{ for highlight in education.highlights }}
+                    <li>{{ highlight }}</li>
+                    {{ end }}
+                </ul>
+            </p>
+            {{ end }}
         </section>
-        
     </div>
-</body>
-</html>
+</div>

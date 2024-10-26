@@ -2,6 +2,7 @@ module _Common
 
 open Zanaptak.TypedCssClasses
 open System.IO
+open Feliz.ViewEngine
 
 type tw = CssClasses<"docs/style.css">
 
@@ -12,6 +13,10 @@ let generateFile (fileName: string) (html: string) =
 type Page =
     | Index 
     | Resume
+
+type Components = 
+    | ReactElements of ReactElement list
+    | HtmlText of string
 
 module Page = 
     let title (page: Page) = 
