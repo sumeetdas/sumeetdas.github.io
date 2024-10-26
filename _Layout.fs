@@ -66,26 +66,34 @@ let head (pageName: Page) =
         ]
     ]
 
-let body (pageName: Page) (components: ReactElement list) = 
+let body (pageName: Page) (components: Components) = 
+    let containerClasses = [
+        tw.``flex``
+        tw.``flex-col``
+        tw.``mx-auto``
+        "max-w-md"
+        "mt-4"
+        tw.``md:max-w-md``
+        tw.``lg:max-w-lg``
+        tw.``xl:max-w-xl``
+        tw.``2xl:max-w-2xl``
+        tw.``justify-center``
+        tw.``align-middle``
+        "print:w-full"
+        "print:max-w-xl"
+    ]
     let container = 
-        Html.div [
-            prop.classes [
-                tw.``flex``
-                tw.``flex-col``
-                tw.``mx-auto``
-                "max-w-md"
-                "mt-4"
-                tw.``md:max-w-md``
-                tw.``lg:max-w-lg``
-                tw.``xl:max-w-xl``
-                tw.``2xl:max-w-2xl``
-                tw.``justify-center``
-                tw.``align-middle``
-                "print:w-full"
-                "print:max-w-xl"
+        match components with
+        | ReactElements elems -> 
+            Html.div [
+                prop.classes containerClasses
+                prop.children elems
             ]
-            prop.children components
-        ]
+        | HtmlText text ->
+            Html.div [
+                prop.classes containerClasses
+                prop.dangerouslySetInnerHTML text
+            ]
 
     Html.body [
         prop.classes [
@@ -107,13 +115,21 @@ let body (pageName: Page) (components: ReactElement list) =
         ]
     ]
 
-let layout (pageName: Page) (components: ReactElement list) = 
+let layout (pageName: Page) (components: Components) = 
     Html.html [
         head pageName
         body pageName components
     ]
 
+/// Converts a list of React elements to an HTML string
+/// - pageName: The name of the page
+/// - elems: The list of React elements
 let htmlToString (pageName: Page) (elems: ReactElement list) = 
-    elems
+    ReactElements elems
+    |> layout pageName
+    |> Render.htmlView
+
+let htmlTextToString (pageName: Page) (text: string) = 
+    HtmlText text
     |> layout pageName
     |> Render.htmlView
