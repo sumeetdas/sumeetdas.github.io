@@ -15,7 +15,19 @@ type Experience = {
     /// Optional field but can't use option since Scriban
     /// does not support it. Instead, use "" for None
     ProductUrl: string
+    PageBreak: bool
 }
+with 
+    static member Default = { 
+        Company = ""
+        Designation = ""
+        Duration = ""
+        Location = ""
+        Summary = ""
+        Highlights = []
+        ProductUrl = ""
+        PageBreak = false 
+    }
 
 type PersonalProject = {
     Name: string
@@ -88,7 +100,7 @@ let skills: Skills list = [
 ]
 
 let workExperiences: Experience list = [
-    {
+    {Experience.Default with
         Company = "Delphix (acquired by Perforce)"
         Location = "Remote"
         Designation = "Senior Software Development Engineer III"
@@ -104,8 +116,8 @@ let workExperiences: Experience list = [
                 "which profiles data and recommends suitable masking algorithms."
             ] |> concat
             [
-                "Worked on various Azure Data Factory templates that allow "
-                "profiling and masking of various data sources such as Snowflake and Azure SQL."
+                "Developed Azure Data Factory templates that allow "
+                "profiling and masking of data sources such as Snowflake and Azure SQL."
             ] |> concat
             [
                 "Tech used: Azure (ADF, AppConfig, AzureSQL, AKS), "
@@ -114,7 +126,7 @@ let workExperiences: Experience list = [
         ]
         ProductUrl = "https://www.delphix.com/solutions/microsoft"
     }
-    {
+    {Experience.Default with
         Company = "Delphix (acquired by Perforce)"
         Location = "Remote"
         Designation = "Senior Software Development Engineer III"
@@ -148,7 +160,7 @@ let workExperiences: Experience list = [
         ] 
         ProductUrl = "https://www.delphix.com/video/automated-masking-salesforce-sandboxes"
     }
-    {
+    {Experience.Default with
         Company = "Oracle India Pvt. Ltd."
         Location = "Hyderabad, India"
         Designation = "Senior Software Engineer"
@@ -178,7 +190,7 @@ let workExperiences: Experience list = [
         ]
         ProductUrl = "https://www.oracle.com/in/life-sciences/clinical-trials/"
     }
-    {
+    {Experience.Default with
         Company = "Oracle India Pvt. Ltd."
         Location = "Remote"
         Designation = "Software Engineer"
@@ -203,7 +215,7 @@ let workExperiences: Experience list = [
         ]
         ProductUrl = "https://www.oracle.com/in/life-sciences/clinical-trials/cleartrial-portfolio-planning/"
     }
-    {
+    {Experience.Default with
         Company = "Sabre Holdings"
         Location = "Bangalore, India"
         Designation = "Software Developer Intern"
@@ -215,22 +227,17 @@ let workExperiences: Experience list = [
                 "Team at Sabre Holdings, Bangalore"
             ] |> concat
             [
-                "Web app capable of adding, updating and viewing"
-                "projects, retrieving budget data from Excel"
-                "spreadsheets maintained by Project Managers and"
-                "generating different types of reports in PDF"
-                "format on the fly"
+                "Web app to manage projects, retrieve budget data from "
+                "Excel spreadsheets by Project Managers, and generate PDF reports "
+                "on demand"
             ] |> concat
             [
-                "Powered by Yii, a PHP open-source MVC framework,"
-                "MySQL database, JQuery (a JavaScript library),"
-                "HTML5, CSS3 and various other open-source JavaScript"
-                "and PHP libraries"
+                "Built with Yii (PHP MVC framework), MySQL, jQuery, "
+                "HTML5, CSS3, and various open-source JavaScript and PHP libraries."
             ] |> concat
-        ]
-        ProductUrl = "" 
+        ] 
     }
-    {
+    {Experience.Default with
         Company = "Bhilai Steel Plant"
         Location = "Bhilai, India"
         Designation = "Summer Intern"
@@ -239,7 +246,7 @@ let workExperiences: Experience list = [
         Highlights = [
             "Developed SMS module for C & IT Department"
         ]
-        ProductUrl = ""
+        PageBreak = true
     }
 ]
 
@@ -281,17 +288,12 @@ let personalProjectsList: PersonalProject list =
             ProjectUrl = "https://github.com/sumeetdas/Meow"
             Highlights = [
                 [
-                    "A blogging engine consisting of a REST API"
-                    "for querying and modifying flat-file blogs"
-                    "and a single page application (SPA) in the"
-                    "front-end"
+                    "A blogging engine with a REST API for managing flat-file "
+                    "blogs and a single-page application (SPA) frontend."
                 ] |> concat 
                 [
-                    "Enables various search engine bots and"
-                    "scrapers of social networking sites like"
-                    "Facebook to retrieve several key metadata"
-                    "from the blog whilst allowing developers"
-                    "to use AngularJS in the front-end"
+                    "Allows search engines and social media scrapers (e.g., Facebook) "
+                    "to retrieve key metadata from AngularJS-based UI."
                 ] |> concat
             ] 
         }
@@ -302,9 +304,8 @@ let personalProjectsList: PersonalProject list =
             ProjectUrl = "https://github.com/sumeetdas/AngularJS-JWT-OAuth2-Demo"
             Highlights = [
                 [
-                    "An app to demonstrate OAuth2 authentication and"
-                    "front-end route authorization using JSON Web Token"
-                    "(JWT) and Angular UI Router."
+                    "Demonstrates OAuth2 authentication and route authorization "
+                    "using JWT and Angular UI Router."
                 ] |> concat
             ]
         }
