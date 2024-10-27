@@ -15,7 +15,19 @@ type Experience = {
     /// Optional field but can't use option since Scriban
     /// does not support it. Instead, use "" for None
     ProductUrl: string
+    PageBreak: bool
 }
+with 
+    static member Default = { 
+        Company = ""
+        Designation = ""
+        Duration = ""
+        Location = ""
+        Summary = ""
+        Highlights = []
+        ProductUrl = ""
+        PageBreak = false 
+    }
 
 type PersonalProject = {
     Name: string
@@ -88,7 +100,7 @@ let skills: Skills list = [
 ]
 
 let workExperiences: Experience list = [
-    {
+    {Experience.Default with
         Company = "Delphix (acquired by Perforce)"
         Location = "Remote"
         Designation = "Senior Software Development Engineer III"
@@ -114,7 +126,7 @@ let workExperiences: Experience list = [
         ]
         ProductUrl = "https://www.delphix.com/solutions/microsoft"
     }
-    {
+    {Experience.Default with
         Company = "Delphix (acquired by Perforce)"
         Location = "Remote"
         Designation = "Senior Software Development Engineer III"
@@ -148,7 +160,7 @@ let workExperiences: Experience list = [
         ] 
         ProductUrl = "https://www.delphix.com/video/automated-masking-salesforce-sandboxes"
     }
-    {
+    {Experience.Default with
         Company = "Oracle India Pvt. Ltd."
         Location = "Hyderabad, India"
         Designation = "Senior Software Engineer"
@@ -178,7 +190,7 @@ let workExperiences: Experience list = [
         ]
         ProductUrl = "https://www.oracle.com/in/life-sciences/clinical-trials/"
     }
-    {
+    {Experience.Default with
         Company = "Oracle India Pvt. Ltd."
         Location = "Remote"
         Designation = "Software Engineer"
@@ -203,7 +215,7 @@ let workExperiences: Experience list = [
         ]
         ProductUrl = "https://www.oracle.com/in/life-sciences/clinical-trials/cleartrial-portfolio-planning/"
     }
-    {
+    {Experience.Default with
         Company = "Sabre Holdings"
         Location = "Bangalore, India"
         Designation = "Software Developer Intern"
@@ -227,10 +239,9 @@ let workExperiences: Experience list = [
                 "HTML5, CSS3 and various other open-source JavaScript"
                 "and PHP libraries"
             ] |> concat
-        ]
-        ProductUrl = "" 
+        ] 
     }
-    {
+    {Experience.Default with
         Company = "Bhilai Steel Plant"
         Location = "Bhilai, India"
         Designation = "Summer Intern"
@@ -239,7 +250,7 @@ let workExperiences: Experience list = [
         Highlights = [
             "Developed SMS module for C & IT Department"
         ]
-        ProductUrl = ""
+        PageBreak = true
     }
 ]
 
